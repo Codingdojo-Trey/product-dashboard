@@ -1,0 +1,23 @@
+<h1>Prodcuts#show</h1>
+<p>This is where I view information about a specific product</p>
+<p>This a special page reserved for showing info about this product:</p>
+<h2><%= @product.name %></h2>
+<h2>category: <%= @product.category.name  if !@product.category.nil?%></h2>
+<h3><%= @product.pricing %></h3>
+<p> <%= @product.description %> </p>
+<a href="/products">Go back to main page!</a>
+
+
+<h2>Add a comment!</h2>
+<form action='/comments/<%= @product.id %>/create' method='post'>
+	<%= tag(:input,:type =>"hidden",:name => request_forgery_protection_token.to_s,:value => form_authenticity_token)%>
+	Add your comment about <%= @product.name %> <textarea name='comment[comment]'></textarea>
+	<input type='submit' value='add comment'>
+</form>
+
+<h3>Some comments about this product:</h3>
+<ul>
+	<% @product.comments.each do |comment| %>
+		<li><%= comment.comment %></li>
+	<% end %>
+</ul>

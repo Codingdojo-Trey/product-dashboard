@@ -1,0 +1,16 @@
+<h1>Prodcuts#new</h1>
+<p>This is where the form will go for a new product</p>
+<!--I have to pass the form data within an object called product -->
+<form action='/products' method='post'>
+	Name:<input name='product[name]' type='text'></br>
+	Description:<textarea name='product[description]'></textarea></br>
+	Price:<input type='number' name='product[pricing]'></br>
+	<input type='submit' value='make a new product!'> 
+	<%= tag(:input,:type =>"hidden",:name => request_forgery_protection_token.to_s,:value => form_authenticity_token)%>
+	Category: 
+	<select name='category'>
+		<% @categories.each do |category| %>
+			<option value='<%= category.id%>'><%= category.name %></option>
+		<% end %>
+	</select>
+</form>

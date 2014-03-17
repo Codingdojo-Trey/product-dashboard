@@ -1,0 +1,13 @@
+<h1>Prodcuts#index</h1>
+<a href="/products/new">Make a new product</a>
+<a href="/comments">See all of the awesome comments!</a>
+<p>This is the view for seeing all of the products!</p>
+<% @products.each do |product| %> <!--just like a foreach loop in PHP -->
+	<h2><%=product.name %></h2>
+	<h3><%= product.pricing %></h3>
+	<p><%= product.description %>
+		<a href="/products/<%= product.id %>/edit">edit this product!</a>
+		<a href="/products/<%= product.id %>">show more info!</a>
+		<a href="/products/<%= product.id %>" data-method='delete'>delete this product</a>
+	</p>
+<% end %>

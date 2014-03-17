@@ -1,0 +1,11 @@
+<h1>Prodcuts#edit</h1>
+<p>This is where I go to edit a specific products</p>
+<h3>You're trying to edit the product  <%= @product.name %></h3>
+<form action='/products/<%= @product.id %>' method='post'>
+	<input name='product[name]' type='text' value='<%= @product.name%>'>
+	<textarea name='product[description]'><%= @product.description %></textarea>
+	<input type='number' name='product[pricing]' value='<%= @product.pricing %>'>
+	<input type='submit' value='edit product!'> 
+	<input type="hidden"name="_method"value="put">
+	<%= tag(:input,:type =>"hidden",:name => request_forgery_protection_token.to_s,:value => form_authenticity_token)%>
+</form>
